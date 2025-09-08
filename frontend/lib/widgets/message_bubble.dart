@@ -13,23 +13,29 @@ class MessageBubble extends StatelessWidget {
     return Align(
       alignment: isUser ? Alignment.centerRight : Alignment.centerLeft,
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 10),
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-        constraints: BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
+        margin: const EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        constraints:
+            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.75),
         decoration: BoxDecoration(
-          color: isUser ? Colors.blueAccent : Colors.grey.shade300,
+          gradient: LinearGradient(
+            colors: isUser
+                ? [Colors.orangeAccent, Colors.deepOrange]
+                : [Colors.grey.shade800, Colors.grey.shade700],
+          ),
           borderRadius: BorderRadius.only(
-            topLeft: const Radius.circular(16),
-            topRight: const Radius.circular(16),
-            bottomLeft: Radius.circular(isUser ? 16 : 4),
-            bottomRight: Radius.circular(isUser ? 4 : 16),
+            topLeft: const Radius.circular(18),
+            topRight: const Radius.circular(18),
+            bottomLeft: Radius.circular(isUser ? 18 : 6),
+            bottomRight: Radius.circular(isUser ? 6 : 18),
           ),
         ),
         child: Text(
           message.text,
           style: TextStyle(
-            color: isUser ? Colors.white : Colors.black,
+            color: isUser ? Colors.white : Colors.grey.shade200,
             fontSize: 16,
+            fontWeight: FontWeight.w500,
           ),
         ),
       ),
